@@ -1,165 +1,261 @@
-int main()
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+#define C 100
+
+typedef struct
+{
+  int idade, cpf, telefone;
+  char nome[50], cargo[50], sexo[50], email[50];
+
+}funcionario;
+
+void tela_inicial()
+{
+   system("color F0");
+    printf("\n\n\n\n\n\n\n\n________________________________________________________________________________________________________________________\n\n");
+    printf("\t\t\t\t\t   Sejam bem vindos(as) ao CEFETECH!\n");
+    printf("\t\t\t\t   O seu programa para cadastramento de funcionarios.");
+    printf("\n________________________________________________________________________________________________________________________\n\n\n\n\n\n\n\n\n\n");
+    printf("Desenvolvido por: Afonso Augusto Baptista\n\t\t  Gustavo Toaiari Xavier\n\t\t  Lucas Ferreira Dias\n\t\t  Matheus Marques Braga\n");
+    printf("\t\t\t\t\t\t\t\t\t\t\t\t\t   Versao 3.0\n");
+    system("pause");
+    system("cls");
+}
+
+void tela_de_saida()
 {
     system("color F0");
-    setlocale (LC_ALL, "Portuguese");
-    int opcao, opcao1, opcao2, opcao3;
-    printf("\n----------------------------------------------------------------------------------------------------------------\n");
-    printf ("\nO notebook sera usado para:\n1: Trabalhar \n2: Jogar \n3: Finalizar compra\n");
-    printf("\n----------------------------------------------------------------------------------------------------------------\n");
-    scanf ("%d", &opcao);
+    printf("\n========================================================================================================================\n\n");
+    printf("\t\t\t\t\t\tObrigado por usar o programa\n");
+    printf("\t\t\t\t\t\t\tVolte sempre!\n");
+    printf("\n========================================================================================================================\n\n");
+    system("pause");
+    system("cls");
+}
+
+
+
+
+int main()
+{
+    setlocale(LC_ALL,"");
+
+        funcionario funcionarios[C];
+
+
+    system("color F0");
+    int c, opcao, a, op, consulta_cpf, b, muda_dado;
+
+
+    tela_inicial();
     system("cls");
 
 
-
+    do
     {
-        switch (opcao)
+
+    printf("\n========================================================================================================================\n\n");
+    printf("\t\t\t\t\t\tSeja bem vindo(a) ao CEFETECH\n");
+    printf("\n========================================================================================================================\n\n");
+    printf("\tBem vindo oque deseja fazer?\n\n");
+    printf("\t[1] Cadastrar um novo funcionario\n");
+    printf("\t[2] Consultar funcionarios cadastrados\n");
+    printf("\t[3] Consulta de dados do funcionario pelo cpf\n");
+    printf("\t[4] Mudar dados de funcionarios ja cadastrados\n");
+    printf("\t[5] Sair do programa\n\n");
+
+    printf("\tDigite o número referente a opção que deseje executar: ");
+    scanf("%d", &opcao);
+    system("cls");
+
+
+    if(opcao==1)
+    {
+        printf("\n========================================================================================================================\n\n");
+        printf("\t\t\t\t\t\tCadastro de funcionarios CEFETECH\n");
+        printf("\n========================================================================================================================\n\n");
+        printf("\tQuantos funcionarios deseja fazer o cadastro:");
+        scanf("%d", &c);
+
+        for(a=0; a<c; a++)
         {
-        case 1:
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-            printf ("\nOpções de compra:\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-            printf ("\n1-Novo Inspiron 14 5000 2 em 1\n\n");
-            printf ("\n2-Inspiron 15 3000\n\n");
-            printf ("\n3-Inspiron 13 5000\n\n");
-            printf ("\n4-Notebook XPS 13\n\n");
-            printf ("\n5-Notebook XPS 13 melhorado\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-            printf ("\nSelecione o número do que mais te agrada para ver as especificações:\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-                scanf ("%d", &opcao1);
+            system("cls");
+            printf("\n========================================================================================================================\n\n");
+            printf("\t\t\t\t\t\tCadastro de funcionarios\n");
+            printf("\n========================================================================================================================\n\n");
 
-                switch (opcao1)
-                {
-                case 1:
+            printf("\tNome: ", a+1);
+            scanf("%s", &funcionarios[a].nome);
 
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i3-1115G4 (3.0GHz até 4.1GHz, cache de 6MB, dual-core, 11ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo integrada Intel® UHD Graphics com memória gráfica compartilhada\n");
-                    printf ("\nMemória RAM: Memória de 4GB (1x4GB), DDR4, 3200MHz; Expansível até 16GB (2 slots soDIMM, 1 slot livre)\n");
-                    printf ("\nSSD: SSD de 128GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$4.299,00\n");
-                    break;
-                case 2:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Pentium® Gold 5405U (2.3 GHz, cache de 2MB, dual-core,8ª geração)\n");
-                    printf ("\nSistema Operacional: Ubuntu Linux 18.04\n");
-                    printf ("\nPlaca de video: Placa de vídeo integrada Intel® UHD Graphics 610\n");
-                    printf ("\nMemória RAM: Memória de 4GB (1x4GB), DDR4; Expansível até 16GB (1 slot soDIMM, sem slot livre)\n");
-                    printf ("\nSSD: SSD de 128GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$2.848,00\n");
-                    break;
-                case 3:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i7-1165G7 (2.8GHz até 4.7GHz, cache de 12MB, quad-core, 11ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo integrada Intel® Iris® Xe com memória gráfica compartilhada\n");
-                    printf ("\nMemória RAM: Memória soldada de 8GB, LPDDR4x, 4267MHz; Sem opção de expansibilidade\n");
-                    printf ("\nSSD: SSD de 512 GB com 32GB Intel® Optane Memory ™ H10\n");
-                    printf ("\nPreço: R$7.198,00\n");
-                    break;
-                case 4:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i5-1035G1 (1 GHz até 3.6 GHz, cache de 6MB, quad-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo Intel® UHD Graphics\n");
-                    printf ("\nMemória RAM: Memória soldada de 8GB, LPDDR4x, 4267MHz; Sem opção de expansibilidade\n");
-                    printf ("\nSSD: SSD de 512 GB com 32GB Intel® Optane Memory ™ H10\n");
-                    printf ("\nPreço: R$8.998,00\n");
-                    break;
-                case 5:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i7-1065G7 (1.3 GHz até 3.9 GHz, cache de 8MB, quad-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo integrada Intel® Iris Plus Graphics\n");
-                    printf ("\nMemória RAM: Memória soldada de 16GB, LPDDR4, 3733MHz\n");
-                    printf ("\nSSD: SSD de 1TB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$11.198,00\n");
-                    break;
+            printf("\tSexo: ", a+1);
+            scanf("%s", &funcionarios[a].sexo);
 
-                }
-                break;
+            printf("\tTelefone de contato: ", a+1);
+            scanf("%d", &funcionarios[a].telefone);
+
+            printf("\tCPF: ", a+1);
+            scanf("%d", &funcionarios[a].cpf);
+
+            printf("\tIdade: ", a+1);
+            scanf("%d", &funcionarios[a].idade);
+
+            printf("\tEmail: ", a+1);
+            scanf("%s", &funcionarios[a].email);
+
+            printf("\tCargo na empresa: ", a+1);
+            scanf("%s", &funcionarios[a].cargo);
+
+            system("pause");
 
 
-        {
-
-        case 2:
-            printf ("\n\nOpções de compra:\n\n");
-            printf ("\n1-Novo Dell G3 15\n\n");
-            printf ("\n2-Dell G3 15\n\n");
-            printf ("\n3-Alienware area 51M R2\n\n");
-            printf ("\n4-Alienware area 51M R2 Melhorado\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-            printf ("\nSelecione o número do que mais te agrada para ver as especificações:\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-                scanf ("%d", &opcao1);
-                switch (opcao1)
-                 {
-                case 1:
-
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i5-10300H (2.5 GHz até 4.5 GHz, cache de 8MB, quad-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo dedicada NVIDIA® GeForce® GTX 1650 com 4GB de GDDR6\n");
-                    printf ("\nMemória RAM: Memória de 8GB (2x4GB), DDR4, 2933MHz, Expansível até 16GB (2 slots soDIMM, sem slot livre)\n");
-                    printf ("\nSSD: SSD de 256GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$5.999,00\n");
-                    break;
-                case 2:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i7-10750H (2.6 GHz até 5 GHz, cache de 12MB, hexa-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo dedicada NVIDIA® GeForce® GTX 1660 Ti com 6GB de GDDR6\n");
-                    printf ("\nMemória RAM: Memória de 16GB (2x8GB), DDR4, 2933MHz\n");
-                    printf ("\nSSD: SSD de 512GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$8.999,00\n");
-                    break;
-                case 3:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i7-10700 (2.9GHz até 4.8GHz com Turbo Boost Max 3.0, cache de 16MB, octa-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo dedicada NVIDIA® GeForce® RTX 2060 com 6GB de GDDR6\n");
-                    printf ("\nMemória RAM: Memória de 16GB (2x8GB), DDR4, 2933MHz; Expansível até 32GB (2 slots soDIMM, sem slot livre)\n");
-                    printf ("\nSSD: SSD de 512GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$27.699,00\n");
-                    break;
-                case 4:
-                    printf ("\nEspecificações:\n\n");
-                    printf ("\nProcessador: Intel® Core™ i9-10900K (3.7GHz até 5.3GHz com Thermal Velocity Boost, cache de 20MB, deca-core, 10ª geração)\n");
-                    printf ("\nSistema Operacional: Windows 10 Home Single Language, de 64 bits - em Português (Brasil)\n");
-                    printf ("\nPlaca de video: Placa de vídeo dedicada NVIDIA® GeForce® RTX 2080 SUPER™ com 8GB de GDDR6\n");
-                    printf ("\nMemória RAM: Memória de 16GB (2x8GB), DDR4 XMP, 3200MHz; Expansível até 32GB (2 slots soDIMM, sem slot livre)\n");
-                    printf ("\nSSD: SSD de 512GB PCIe NVMe M.2\n");
-                    printf ("\nPreço: R$33.496,00\n");
-                    break;
-
-                }
-                break;
         }
 
-
-        case 3:
-            printf ("\nFale qual o código do notebook que voce deseja para a recepicionista para reitirar o objeto e realizar o pagamento.\n\n");
-            printf ("\n1-Novo Inspiron 14 5000 2 em 1 R$4.299,00 Código:1\n\n");
-            printf ("\n2-Inspiron 15 3000 R$2.848,00 Código:2\n\n");
-            printf ("\n3-Inspiron 13 5000 R$7.198,00 Código:3\n\n");
-            printf ("\n4-Notebook XPS 13 R$8.998,00 Código:4\n\n");
-            printf ("\n5-Notebook XPS 13 melhorado R$11.198,00 Código:5\n\n");
-            printf ("\n6-Novo Dell G3 15 R$5.999,00 Código:6\n\n");
-            printf ("\n7-Dell G3 15 R$8.999,00 Código:7\n\n");
-            printf ("\n8-Alienware area 51M R2 R$27.699,00 Código:8\n\n");
-            printf ("\n9-Alienware area 51M R2 Melhorado R$33.496,00 Código:9\n\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-            printf ("\nObrigado por comprar na CEFETECH\2\n");
-            printf("\n----------------------------------------------------------------------------------------------------------------\n");
-
-            break;
-
-        default:
-            printf("opção inválida");
-        }
+        system("cls");
 
     }
-    return 0;
 
+    if(opcao==2)
+    {
+        for(a=0; a<c; a++)
+        {
+            printf("Nome: %s",funcionarios[a].nome);
+            printf("\tSexo: %s",funcionarios[a].sexo);
+            printf("\tTelefone: %d",funcionarios[a].telefone);
+            printf("\tCPF: %d",funcionarios[a].cpf);
+            printf("\tIdade: %d",funcionarios[a].idade);
+            printf("\tEmail: %s",funcionarios[a].email);
+            printf("\tCargo: %s\n",funcionarios[a].cargo);
+
+
+
+        }
+
+
+
+        system("pause");
+        system("cls");
+
+
+    }
+
+
+    if(opcao==3){
+
+
+            printf("Digite o número do cpf do funcionario que procura: ");
+            scanf("%d", &consulta_cpf);
+
+            for(a=0; a<C; a++){
+                if(funcionarios[a].cpf==consulta_cpf){
+                    printf("Nome: %s",funcionarios[a].nome, a+1);
+                    printf("\nSexo: %s",funcionarios[a].sexo, a+1);
+                    printf("\nTelefone: %d",funcionarios[a].telefone, a+1);
+                    printf("\nCPF: %d",funcionarios[a].cpf, a+1);
+                    printf("\nIdade: %d",funcionarios[a].idade, a+1);
+                    printf("\nEmail: %s",funcionarios[a].email, a+1);
+                    printf("\nCargo: %s\n",funcionarios[a].cargo, a+1);
+
+                    system("pause");
+                    system("cls");
+
+            }
+
+
+        }
+
+        }
+
+
+        if(opcao==4){
+
+            printf("Digite o cpf do funcionario que deseja alterar alguma informção:");
+            scanf("%d", &muda_dado);
+
+            for(a=0; a<C; a++)
+            {
+                if(funcionarios[a].cpf==muda_dado)
+                {
+
+            printf("Digite o numero correspondente a opção que deseja executar: ");
+            printf("\n[1] para mudar nome");
+            printf("\n[2] para mudar sexo");
+            printf("\n[3] para mudar telefone");
+            printf("\n[4] para mudar CPF");
+            printf("\n[5] para mudar idade");
+            printf("\n[6] para mudar email");
+            printf("\n[7] para mudar cargo\n");
+            scanf("%d", &op);
+
+            switch(op){
+               case 1:
+                   printf("Digite o novo nome que será cadastrado: ");
+                   scanf("%s", &funcionarios[a].nome);
+                   system("cls");
+                break;
+
+                case 2:
+                    printf("Digite o novo sexo que será cadastrado: ");
+                    scanf("%s", &funcionarios[a].sexo);
+                    system("cls");
+                break;
+
+                case 3:
+                    printf("Digite o novo telefone que será cadastrado: ");
+                    scanf("%d", &funcionarios[a].telefone);
+                    system("cls");
+                break;
+
+                case 4:
+                    printf("Digite o novo CPF que será cadastrado: ");
+                    scanf("%d", &funcionarios[a].cpf);
+                    system("cls");
+                break;
+
+                case 5:
+                    printf("Digite a nova idade que será cadastrado: ");
+                    scanf("%d", &funcionarios[a].idade);
+                    system("cls");
+                break;
+
+                case 6:
+                    printf("Digite o novo email que será cadastrado: ");
+                    scanf("%s", &funcionarios[a].email);
+                    system("cls");
+                break;
+
+                case 7:
+                    printf("Digite o novo cargo que será cadastrado: ");
+                    scanf("%s", &funcionarios[a].cargo);
+                    system("cls");
+                break;
+
+
+                system("cls");
+                system("pause");
+
+
+            }
+                   }
+
+
+
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+    }while(opcao!=5);
+    tela_de_saida();
+
+
+    return 0;
 }
